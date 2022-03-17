@@ -20,7 +20,7 @@ ACADEMIC_YEAR = int(os.getenv("ACADEMIC_YEAR"))
 
 # globals
 PROJECT_DIR = pathlib.Path(__file__).absolute().parent
-DATA_DIR = PROJECT_DIR / CUSTOMER_NAME / "data"
+DATA_DIR = PROJECT_DIR / "data" / CUSTOMER_NAME
 print(DATA_DIR)
 
 if not DATA_DIR.exists():

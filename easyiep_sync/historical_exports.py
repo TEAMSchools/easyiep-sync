@@ -12,7 +12,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# .env
 USER_NAME = os.getenv("USER_NAME")
 PASSWORD = os.getenv("PASSWORD")
 CUSTOMER_NAME = os.getenv("CUSTOMER_NAME")
@@ -21,7 +20,8 @@ ACADEMIC_YEAR = int(os.getenv("ACADEMIC_YEAR"))
 
 # globals
 PROJECT_DIR = pathlib.Path(__file__).absolute().parent
-DATA_DIR = PROJECT_DIR / "data"
+DATA_DIR = PROJECT_DIR / CUSTOMER_NAME / "data"
+print(DATA_DIR)
 
 if not DATA_DIR.exists():
     DATA_DIR.mkdir(parents=True)
@@ -62,14 +62,15 @@ report_params = {
 }
 
 for date in get_date_range(start_date, end_date):
-    print(date)
-    date_fmt = date.strftime(r"%Y-%m-%d")
     download_filepath = (
         DATA_DIR / f"NJSMART-PowerSchool-{date.strftime(r'%Y%m%d')}.txt"
     )
 
     if download_filepath.exists():
         continue
+
+    print(date)
+    date_fmt = date.strftime(r"%Y-%m-%d")
 
     report_url = f"{base_url}/easyiep.plx"
     report_payload = {

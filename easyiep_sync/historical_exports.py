@@ -84,14 +84,9 @@ for date in get_date_range(start_date, end_date):
     }
 
     print("\tExecuting report...")
+    run_date = datetime.now(tz=ZoneInfo(LOCAL_TIMEZONE))
     r_report = easyiep.post(url=report_url, params=report_params, data=report_payload)
     r_report.raise_for_status()
-
-    run_date = (
-        datetime.strptime(r_report.headers["Date"], r"%a, %d %b %Y %H:%M:%S %Z")
-        .replace(tzinfo=ZoneInfo("UTC"), second=0, microsecond=0)
-        .astimezone(tz=ZoneInfo(LOCAL_TIMEZONE))
-    )
 
     retrieval_url = f"{base_url}/easyiep.plx"
     retrieval_params = {

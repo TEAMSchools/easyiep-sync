@@ -135,3 +135,4 @@ archive/
 .bash_secrets
 .pdm.toml
 *.env
+.vscode/

@@ -32,5 +32,7 @@ build-backend = "pdm.pep517.api"
 [tool.pdm.scripts]
 kippnewark.cmd = "python easyiep_sync/historical_exports.py"
 kippnewark.env_file = "kippnewark.env"
+kippnewark.site_packages = true
 kippcamden.cmd = "python easyiep_sync/historical_exports.py"
 kippcamden.env_file = "kippcamden.env"
+kippcamden.site_packages = true

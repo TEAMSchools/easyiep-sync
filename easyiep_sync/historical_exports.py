@@ -119,7 +119,9 @@ def main():
             target_a = [
                 a.attrs["href"]
                 for a in all_a
-                if TARGET_FILENAME in str(a.string) and "viewdoc" in a.attrs["href"]
+                if TARGET_FILENAME in str(a.string)
+                and session_id in a.attrs["href"]
+                and "viewdoc" in a.attrs["href"]
             ]
 
             for a in target_a:
